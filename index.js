@@ -18,7 +18,7 @@ function qcompare(a, b) {
               t = b[i];
               if(x !== t){
                 if(!qcompare(x, t))return false;
-              }else if(i === p[g] || __qhop__.call(b, i)){}else return false;
+              }else if(t === undefined && i !== p[g] && !__qhop__.call(b, i))return false;
               g++;
             }
           }
@@ -127,7 +127,7 @@ function qcompare(a, b) {
               k = b[z];
               if(l !== k){
                 if(!qcompare(l, k))return false;
-              }else if(z === n[j] || __qhop__.call(b, z)){}else return false;
+              }else if(l === undefined && z !== n[j] && !__qhop__.call(b, z))return false;
               j++;
             }
           }
