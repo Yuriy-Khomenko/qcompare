@@ -1,0 +1,26 @@
+{
+  "name": "qcompare",
+  "version": "1.0.1",
+  "description": "the fastest function for comparing two js objects compatible with es6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuriy-Khomenko/qcompare.git"
+  },
+  "keywords": [
+    "fast",
+    "deep",
+    "compare",
+    "equal",
+    "deep-equal"
+  ],
+  "author": "Yuriy Khomenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yuriy-Khomenko/qcompare/issues"
+  },
+  "homepage": "https://github.com/Yuriy-Khomenko/qcompare#readme"
+}
