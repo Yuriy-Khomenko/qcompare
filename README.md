@@ -19,10 +19,10 @@ qcompare( { bar: 1 }, { bar: 2 } ); // false
 - support for all new classes ES6;
 - very quickly compares;
 - correctly compares:
- - for Promise, Symbol, WeakMap, WeakSet, function - compared by reference;
- - for Map and Set - takes into account the insertion order;
- - for Map supported NaN for keys;
- - for Date supported NaN for return value;
+  - for Promise, Symbol, WeakMap, WeakSet, function - compared by reference;
+  - for Map and Set - takes into account the insertion order;
+  - for Map supported NaN for keys;
+  - for Date supported NaN for return value;
 - does not support circular objects;
 
 
