@@ -139,4 +139,4 @@ function qcompare(a, b) {
     return a !== a && b !== b;
   }
 
-  export default qcompare;
+  module.exports = qcompare;
