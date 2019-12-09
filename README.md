@@ -29,8 +29,10 @@ qcompare( { bar: 1 }, { bar: 2 } ); // false
 
 For more balanced testing of performance, tests of other projects were used
 
+```
 Nodejs - v13.3.0
 Date - 09.12.2019
+```
 
 [fast-deep-equal](https://github.com/epoberezkin/fast-deep-equal) project test result
 
