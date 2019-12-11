@@ -63,6 +63,7 @@ function qcompare(a, b) {
         case Symbol:
         case WeakMap:
         case WeakSet:
+        case __Generator__:
           return a === b;
         case undefined:
           let u,y = 0;
@@ -108,16 +109,6 @@ function qcompare(a, b) {
         case InternalError:
         //case AggregateError:
           return a.message === b.message && a.name === b.name;
-        case __Generator__:
-          let d = a.next();
-          let f = b.next();
-          while(d.done === false && f.done === false){
-            if(d.value !== f.value) if(!qcompare(d.value, f.value)) return false;
-            d = a.next();
-            f = b.next();
-          }
-          if(d.done !== f.done)return false;
-          return true;
         default:
           let k,z,l,n = __qkeys__(b), j = 0;
           for(z in a){
