@@ -107,7 +107,7 @@ function qcompare(a, b) {
         case URIError:
         case InternalError:
         //case AggregateError:
-          return a.message === b.message && a.name === b.name && a.code === b.code;
+          return a.message === b.message && a.name === b.name;
         case __Generator__:
           let d = a.next();
           let f = b.next();
