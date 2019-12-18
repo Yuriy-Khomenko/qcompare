@@ -58,6 +58,7 @@ function qcompare(a, b) {
         case BigInt:
         case String:
         case Number:
+        case Boolean:
           return a.valueOf() === b.valueOf();
         case Promise:
         case Symbol:
