@@ -94,8 +94,8 @@ function qcompare(a, b) {
         case Uint32Array:
         case Float32Array:
         case Float64Array:
-        case BigInt64Array:
-        case BigUint64Array:
+        //case BigInt64Array:
+        //case BigUint64Array:
           let s = a.length;
           if(s !== b.length)return false;
           while(s--){if(a[s] !== b[s])return false;}
@@ -107,7 +107,7 @@ function qcompare(a, b) {
         case SyntaxError:
         case TypeError:
         case URIError:
-        case InternalError:
+        //case InternalError:
         //case AggregateError:
           return a.message === b.message && a.name === b.name;
         default:
