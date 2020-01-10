@@ -1,6 +1,6 @@
 {
   "name": "qcompare",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "the fastest function for comparing two js objects compatible with es6",
   "main": "index.js",
   "scripts": {
@@ -12,10 +12,23 @@
   },
   "keywords": [
     "fast",
+    "fastest",
     "deep",
     "compare",
     "equal",
-    "deep-equal"
+    "equals",
+    "deep-equal",
+    "deepequal",
+    "performance",
+    "fast-deep-equal",
+    "fast-equal",
+    "fast-equals",
+    "fast-compare",
+    "equal-object",
+    "compare-object",
+    "fastequal",
+    "fastequals",
+    "fastdeepequal"
   ],
   "author": "Yuriy Khomenko",
   "license": "MIT",
