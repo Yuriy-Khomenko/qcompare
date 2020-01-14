@@ -1,4 +1,5 @@
 ## qcompare
+the fastest function for comparing two js objects compatible with es6 
 
 ### Install
 
