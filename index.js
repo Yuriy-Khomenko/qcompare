@@ -27,9 +27,9 @@ function qcompare(a, b) {
         case Array:
           let q = a.length;
           if(q !== b.length)return false;
-          for(let i = 0; i < q; i++) {
-            if(a[i] === b[i])continue;
-            if(qcompare(a[i], b[i]) === false)return false;
+          while(q--){
+            if(a[q] === b[q])continue;
+            if(qcompare(a[q], b[q]) === false)return false;
           }
           return true;
         case Date:
@@ -83,26 +83,7 @@ function qcompare(a, b) {
           if(o !== b.byteLength)return false;
           a = new Uint8Array(a);
           b = new Uint8Array(b);
-          for(let i = 0; i < o; i++){
-            if(a[i] !== b[i])return false;
-          }
-          return true;
-        case Int8Array:
-        case Uint8Array:
-        case Uint8ClampedArray:
-        case Int16Array:
-        case Uint16Array:
-        case Int32Array:
-        case Uint32Array:
-        case Float32Array:
-        case Float64Array:
-        //case BigInt64Array:
-        //case BigUint64Array:
-          let s = a.length;
-          if(s !== b.length)return false;
-          for(let i = 0; i < s; i++){
-            if(a[i] !== b[i])return false;
-          }
+          while(o--){if(a[o] !== b[o])return false;}
           return true;
         case Error:
         case RangeError:
@@ -115,6 +96,12 @@ function qcompare(a, b) {
         //case AggregateError:
           return a.message === b.message && a.name === b.name;
         default:
+          if(a.BYTES_PER_ELEMENT){
+            let s = a.length;
+            if(s !== b.length)return false;
+            while(s--){if(a[s] !== b[s])return false;}
+            return true;
+          }
           let k,z,l,n = __qkeys__(b), j = 0;
           for(z in a){
             if(__qhop__.call(a, z)){
