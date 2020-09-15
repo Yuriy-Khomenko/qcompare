@@ -1,12 +1,9 @@
 {
   "name": "qcompare",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "the fastest function for comparing two js objects compatible with es6",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
+   "repository": {
     "type": "git",
     "url": "git+https://github.com/Yuriy-Khomenko/qcompare.git"
   },

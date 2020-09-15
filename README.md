@@ -1,5 +1,5 @@
 ## qcompare
-the fastest function for comparing two js objects compatible with es6 
+the fastest function for comparing two js objects compatible with es6
 
 ### Install
 
@@ -8,7 +8,7 @@ npm install --save qcompare
 
 ### Usage
 
-import qcompare from 'qcompare';
+const { qcompare } = require( 'qcompare');
 
 ```javascript
 qcompare( { foo: 1 }, { foo: 1 } ); // true
@@ -25,6 +25,7 @@ qcompare( { bar: 1 }, { bar: 2 } ); // false
   - for Map supported NaN for keys;
   - for Date supported NaN for return value;
 - does not support circular objects;
+- object-keys for the Map are compared by reference;
 
 ### Benchmarks
 
@@ -71,6 +72,26 @@ The fastest is qcompare
 | lodash.isEqual         | 263,044   |
 | assert.deepStrictEqual | 9,504     |
 
+[dequal](https://github.com/lukeed/dequal) project test result
+
+```
+(basic) Benchmark:
+  assert.deepStrictEqual x 131,922 ops/sec ±2.54% (84 runs sampled)
+  util.isDeepStrictEqual x 136,767 ops/sec ±0.63% (87 runs sampled)
+  fast-deep-equal        x 495,419 ops/sec ±0.68% (89 runs sampled)
+  lodash.isEqual         x 128,821 ops/sec ±0.73% (89 runs sampled)
+  nano-equal             x 432,401 ops/sec ±0.50% (89 runs sampled)
+  dequal/lite            x 663,637 ops/sec ±0.83% (89 runs sampled)
+  dequal                 x 635,513 ops/sec ±0.57% (88 runs sampled)
+  qcompare               x 919,345 ops/sec ±1.13% (86 runs sampled)
+
+(complex) Benchmark(excluding object-keys for the Map):
+  assert.deepStrictEqual x 53,397 ops/sec ±0.84% (85 runs sampled)
+  util.isDeepStrictEqual x 53,838 ops/sec ±0.83% (88 runs sampled)
+  lodash.isEqual         x 19,453 ops/sec ±7.39% (86 runs sampled)
+  dequal                 x 266,232 ops/sec ±0.90% (87 runs sampled)
+  qcompare               x 538,806 ops/sec ±0.33% (85 runs sampled)
+```
 
 ### License
 

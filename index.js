@@ -35,7 +35,7 @@ function qcompare(a, b) {
         case Date:
           a = a.getTime();
           b = b.getTime();
-          return a === b || a !== a && b !== b;
+          return a === b || (a !== a && b !== b);
         case Map:
           if(a.size !== b.size)return false;
           let c,m,e = b.entries();
