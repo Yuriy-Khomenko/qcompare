@@ -8,7 +8,7 @@ npm install --save qcompare
 
 ### Usage
 
-const { qcompare } = require( 'qcompare');
+const qcompare = require( 'qcompare');
 
 ```javascript
 qcompare( { foo: 1 }, { foo: 1 } ); // true
