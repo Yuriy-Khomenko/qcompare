@@ -1,6 +1,8 @@
 ## qcompare
 the fastest function for comparing two js objects compatible with es6
 
+*according to the author, this comparison script is the fastest in the industry(watch benchmarks)
+
 ### Install
 
 npm install --save qcompare

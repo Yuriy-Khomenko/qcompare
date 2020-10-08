@@ -55,10 +55,10 @@ function qcompare(a, b) {
           return true;
         case RegExp:
           return a.source === b.source && a.flags === b.flags;
-        case BigInt:
         case String:
         case Number:
         case Boolean:
+        case BigInt:
           return a.valueOf() === b.valueOf();
         case Promise:
         case Symbol:
