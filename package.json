@@ -1,6 +1,6 @@
 {
   "name": "qcompare",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "the fastest function for comparing two js objects compatible with es6",
   "main": "index.js",
    "repository": {

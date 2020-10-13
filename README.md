@@ -23,7 +23,7 @@ qcompare( { bar: 1 }, { bar: 2 } ); // false
 - very quickly compares;
 - correctly compares:
   - for Promise, Symbol, WeakMap, WeakSet, function - compared by reference;
-  - for Map and Set - takes into account the insertion order;
+  - for [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map#Description) and [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#Description) - takes into account the insertion order;
   - for Map supported NaN for keys;
   - for Date supported NaN for return value;
 - does not support circular objects;
