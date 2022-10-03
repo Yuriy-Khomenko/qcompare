@@ -76,7 +76,12 @@ function qcompare(a, b) {
           if(y === __qkeys__(b).length)return true;
           return false;
         case DataView:
-          return a.buffer === b.buffer && a.byteLength === b.byteLength && a.byteOffset === b.byteOffset;
+          if(a.buffer===b.buffer)return true; //? a.byteOffset === b.byteOffset
+          let w=a.byteLength;
+          if(w!==b.byteLength)return false;
+          while(w>7){w-=8;if(a.getFloat64(w)!==b.getFloat64(w))return false;};
+          while(w--&&a.getInt8(w)===b.getInt8(w));
+          return !~w;
         case ArrayBuffer:
         //case SharedArrayBuffer:
           let o = a.byteLength;
