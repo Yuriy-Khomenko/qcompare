@@ -84,12 +84,17 @@ function qcompare(a, b) {
           return !~w;
         case ArrayBuffer:
         //case SharedArrayBuffer:
-          let o = a.byteLength;
-          if(o !== b.byteLength)return false;
-          a = new Uint8Array(a);
-          b = new Uint8Array(b);
-          while(o--){if(a[o] !== b[o])return false;}
-          return true;
+          let o=a.byteLength;
+          if(o!==b.byteLength)return false;
+          o=a.byteLength>>3;
+          let s=o*8,d=new Float64Array(a,0,o),f=new Float64Array(b,0,o);
+          while(o--&&d[o]===f[o]);
+          if(~o)return false;
+          a=new Uint8Array(a,s);
+          b=new Uint8Array(b,s);
+          o=a.length;
+          while(o--&&a[o]=== b[o]);
+          return !~o;
         case Error:
         case RangeError:
         case EvalError:
