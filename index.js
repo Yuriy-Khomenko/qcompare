@@ -24,8 +24,8 @@ function _(a, b) {
         case Array:
           let q = a.length;
           if(q !== b.length)return false;
-          while(q-- && a[q] === b[q] );
-          return !~q || _(a[q],b[q]);
+          while(q-- && qcompare(a[q],b[q]));
+          return !~q;
         case Date:
           a = a.getTime();
           b = b.getTime();
@@ -128,8 +128,8 @@ function qcompare(a, b) {
         case Array:
           let q = a.length;
           if(q !== b.length)return false;
-          while(q-- && a[q] === b[q] );
-          return !~q || _(a[q],b[q]);
+          while(q-- && qcompare(a[q],b[q]));
+          return !~q;
         case Date:
           a = a.getTime();
           b = b.getTime();
