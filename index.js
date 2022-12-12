@@ -1,8 +1,8 @@
 'use strict';
+
 const G = Object.getPrototypeOf(function*(){});
 const keys = Object.keys;
-const hop = Object.prototype.hasOwnProperty;
-
+const hop = Function.prototype.call.bind(Object.prototype.hasOwnProperty);
 
 function _(a, b) {
     if(typeof a === 'object' && typeof b === 'object' && a !== null && b !== null){
@@ -12,11 +12,11 @@ function _(a, b) {
         case Object:
           let t,i,p=keys(b),g=0;
           for(i in a){
-            if(hop.call(a,i)){
+            if(hop(a,i)){
               t = b[i];
               if(a[i] !== t && !_(a[i],t)){
                 return false;
-              }else if(t === undefined && i !== p[g] && !hop.call(b,i))return false;
+              }else if(t === undefined && i !== p[g] && !hop(b,i))return false;
               g++;
             }
           }
@@ -24,7 +24,7 @@ function _(a, b) {
         case Array:
           let q = a.length;
           if(q !== b.length)return false;
-          while(q-- && qcompare(a[q],b[q]));
+          while(q-- && (a[q] === b[q] || qcompare(a[q],b[q])));
           return !~q;
         case Date:
           a = a.getTime();
@@ -93,11 +93,11 @@ function _(a, b) {
           if(a.toString) return a.toString() === b.toString();
           let k,z,n=keys(b),j=0;
           for(z in a){
-            if(hop.call(a, z)){
+            if(hop(a, z)){
               k = b[z];
               if(a[z] !== k && !_(a[z],k)){
                 return false;
-              }else if(l === undefined && z !== n[j] && !hop.call(b,z))return false;
+              }else if(l === undefined && z !== n[j] && !hop(b,z))return false;
               j++;
             }
           }
@@ -116,11 +116,11 @@ function qcompare(a, b) {
         case Object:
           let t,i,p=keys(b),g=0;
           for(i in a){
-            if(hop.call(a,i)){
+            if(hop(a,i)){
               t = b[i];
               if(a[i] !== t && !_(a[i],t)){
                 return false;
-              }else if(t === undefined && i !== p[g] && !hop.call(b,i))return false;
+              }else if(t === undefined && i !== p[g] && !hop(b,i))return false;
               g++;
             }
           }
@@ -128,7 +128,7 @@ function qcompare(a, b) {
         case Array:
           let q = a.length;
           if(q !== b.length)return false;
-          while(q-- && qcompare(a[q],b[q]));
+          while(q-- && (a[q] === b[q] || _(a[q],b[q])));
           return !~q;
         case Date:
           a = a.getTime();
@@ -198,11 +198,11 @@ function qcompare(a, b) {
           if(a.toString) return a.toString() === b.toString();
           let k,z,n=keys(b),j=0;
           for(z in a){
-            if(hop.call(a, z)){
+            if(hop(a, z)){
               k = b[z];
               if(a[z] !== k && !_(a[z],k)){
                 return false;
-              }else if(l === undefined && z !== n[j] && !hop.call(b,z))return false;
+              }else if(l === undefined && z !== n[j] && !hop(b,z))return false;
               j++;
             }
           }
