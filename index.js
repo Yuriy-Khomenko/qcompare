@@ -194,7 +194,7 @@ function qcompare(a, b) {
             while(s-- && a[s] === b[s]);
             return !~s;
           }
-          if(a.valueOf) return qcompare(a.valueOf(),b.valueOf());
+          if(a.valueOf) return a.valueOf() === b.valueOf();
           if(a.toString) return a.toString() === b.toString();
           let k,z,n=keys(b),j=0;
           for(z in a){
