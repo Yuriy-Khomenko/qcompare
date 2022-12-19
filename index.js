@@ -67,7 +67,7 @@ function _(a, b) {
           b = new Uint8Array(b,s);
           o = a.length;
           while(o-- && a[o] === b[o]);
-          return !~o;          
+          return !~o;
         case DataView:
           if(a.buffer === b.buffer)return true;
           let w = a.byteLength;
@@ -89,15 +89,46 @@ function _(a, b) {
             while(s-- && a[s] === b[s]);
             return !~s;
           }
-          if(a.valueOf) return a.valueOf() === b.valueOf();
-          if(a.toString) return a.toString() === b.toString();
+          if(typeof a.valueOf === 'function'){
+            const vl = a.valueOf();
+            if(vl === a){
+              if(a instanceof Array){
+                let q = a.length;
+                if(q !== b.length)return false;
+                while(q-- && (a[q] === b[q] || _(a[q],b[q])));
+                return !~q;
+              }
+              if(a instanceof Map){
+                if(a.size !== b.size || a.entries !== b.entries)return false;
+                let c,m,e = b.entries();
+                for(c of a){
+                  m = e.next().value;
+                  if(m[0] !== c[0]) if(m[0] !== m[0] && c[0] !== c[0]){}else return false;
+                  if(m[1] !== c[1] && !_(c[1],m[1]))return false;
+                }
+                return true;
+              }
+              if(a instanceof Set){
+                if(a.size !== b.size || a.values !== b.values)return false;
+                let v,h,r = b.values();
+                for(v of a){
+                  h = r.next().value;
+                  if(h !== v && !_(v,h))return false;
+                }
+                return true;
+              }
+            } else {
+              return qcompare(vl,b.valueOf());
+            }
+          }
+          if(Object.prototype.toString !== a.toString && typeof a.toString === 'function') return a.toString() === b.toString();
           let k,z,n=keys(b),j=0;
           for(z in a){
             if(hop(a, z)){
               k = b[z];
               if(a[z] !== k && !_(a[z],k)){
                 return false;
-              }else if(l === undefined && z !== n[j] && !hop(b,z))return false;
+              }else if(k === undefined && z !== n[j] && !hop(b,z))return false;
               j++;
             }
           }
@@ -172,7 +203,7 @@ function qcompare(a, b) {
           b = new Uint8Array(b,s);
           o = a.length;
           while(o-- && a[o] === b[o]);
-          return !~o;          
+          return !~o;
         case DataView:
           if(a.buffer === b.buffer)return true;
           let w = a.byteLength;
@@ -194,15 +225,46 @@ function qcompare(a, b) {
             while(s-- && a[s] === b[s]);
             return !~s;
           }
-          if(a.valueOf) return a.valueOf() === b.valueOf();
-          if(a.toString) return a.toString() === b.toString();
+          if(typeof a.valueOf === 'function'){
+            const vl = a.valueOf();
+            if(vl === a){
+              if(a instanceof Array){
+                let q = a.length;
+                if(q !== b.length)return false;
+                while(q-- && (a[q] === b[q] || _(a[q],b[q])));
+                return !~q;
+              }
+              if(a instanceof Map){
+                if(a.size !== b.size || a.entries !== b.entries)return false;
+                let c,m,e = b.entries();
+                for(c of a){
+                  m = e.next().value;
+                  if(m[0] !== c[0]) if(m[0] !== m[0] && c[0] !== c[0]){}else return false;
+                  if(m[1] !== c[1] && !_(c[1],m[1]))return false;
+                }
+                return true;
+              }
+              if(a instanceof Set){
+                if(a.size !== b.size || a.values !== b.values)return false;
+                let v,h,r = b.values();
+                for(v of a){
+                  h = r.next().value;
+                  if(h !== v && !_(v,h))return false;
+                }
+                return true;
+              }
+            } else {
+              return qcompare(vl,b.valueOf());
+            }
+          }
+          if(Object.prototype.toString !== a.toString && typeof a.toString === 'function') return a.toString() === b.toString();
           let k,z,n=keys(b),j=0;
           for(z in a){
             if(hop(a, z)){
               k = b[z];
               if(a[z] !== k && !_(a[z],k)){
                 return false;
-              }else if(l === undefined && z !== n[j] && !hop(b,z))return false;
+              }else if(k === undefined && z !== n[j] && !hop(b,z))return false;
               j++;
             }
           }
