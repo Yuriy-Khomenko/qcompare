@@ -28,6 +28,10 @@ qcompare( { bar: 1 }, { bar: 2 } ); // false
 - object-keys for the Map are compared by reference;
 
 ### Benchmarks
+```
+Nodejs - v16.8.0
+Date - 07.12.2022
+```
 
 Synthetic test, iteration for a large object
 
@@ -42,11 +46,6 @@ lodash.isequal - 43.291s
 ```
 
 For more balanced testing of performance, tests of other projects were used
-
-```
-Nodejs - v16.8.0
-Date - 07.12.2022
-```
 
 [fast-deep-equal v3.1.3](https://github.com/epoberezkin/fast-deep-equal) project test result
 
