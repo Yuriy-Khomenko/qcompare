@@ -29,6 +29,18 @@ qcompare( { bar: 1 }, { bar: 2 } ); // false
 
 ### Benchmarks
 
+Synthetic test, iteration for a large object
+
+```
+qcompare - 5.663s
+nano-equal - 8.679s
+dequal - 8.265s
+fast-deep-equal - 7.330s
+fast-equals - 43.327ms
+react-fast-compare - 7.969s
+lodash.isequal - 43.291s
+```
+
 For more balanced testing of performance, tests of other projects were used
 
 ```
